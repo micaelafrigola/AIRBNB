@@ -1,37 +1,19 @@
-<div id="<%= dom_id flat %>">
-  <p>
-    <strong>Name:</strong>
-    <%= flat.name %>
-  </p>
 
-  <p>
-    <strong>Address:</strong>
-    <%= flat.address %>
-  </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= flat.description %>
-  </p>
-
-  <p>
-    <strong>Occupancy:</strong>
-    <%= flat.occupancy %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= flat.price %>
-  </p>
-
-  <p>
-    <strong>Image url:</strong>
-    <%= flat.image_url %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= flat.user.first_name%> <%= flat.user.last_name %>
-  </p>
-
-</div>
+  <div id="<%= dom_id flat%>">
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body" style="height: 88px;" overflow="hidden">
+        <h5 class="card-title"><%= flat.name %></h5>
+        <p class="card-text"><%= flat.description %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Location <%= flat.address %></li>
+        <li class="list-group-item">Occupancy <%= flat.occupancy %></li>
+        <li class="list-group-item">Price/ Night<%= flat.price %>CHF</li>
+      </ul>
+      <div class="card-body text-center">
+         <%= link_to "Show this flat", flat, class: "btn btn-primary"%>
+      </div>
+    </div>
+  </div>

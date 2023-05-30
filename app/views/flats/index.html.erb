@@ -1,14 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Flats</h1>
-
-<div id="flats">
-  <% @flats.each do |flat| %>
-    <%= render flat %>
-    <p>
-      <%= link_to "Show this flat", flat %>
-    </p>
-  <% end %>
+<div class="cards">
+  <%# <div id="flats"> %>
+    <% @flats.each do |flat| %>
+      <%= render flat %>
+    <% end %>
+  <%# </div> %>
 </div>
-
-<%= link_to "New flat", new_flat_path if policy(Flat).new?%>
+<%= link_to "New flat", new_flat_path , class: "btn btn-secondary mt-3" if policy(Flat).new?%>
