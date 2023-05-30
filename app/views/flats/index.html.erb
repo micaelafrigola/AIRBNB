@@ -1,11 +1,21 @@
-<p style="color: green"><%= notice %></p>
-<h1>Flats</h1>
+<div class="banner">
+  <div class="container" id="homepage-header">
+    <h1 class="display-3"><strong>Holidays - the authentic way</strong></h1>
+    <h6>Get the local experience - Find the perfect flat</h6>
+  </div>
+</div>
+
+
+<%# <p style="color: green"><%= notice %>
+
 <div class="cards">
   <%# <div id="flats"> %>
   <% @flats.each do |flat| %>
     <div class="container">
       <%= render flat %>
-      <%= link_to "Show this flat", flat, class: "btn btn-primary mt-3 mb-5" %>
+      <div class="d-grid">
+        <%= link_to "Show this flat", flat, class: "btn mt-2 mb-5"%>
+      </div>
     </div>
   <% end %>
 </div>
