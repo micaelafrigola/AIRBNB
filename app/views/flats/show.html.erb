@@ -3,8 +3,12 @@
 <%= render @flat %>
 
 <div>
-  <%= link_to "Edit this flat", edit_flat_path(@flat) %> |
+  <% if policy(@flat).edit? %>
+    <%= link_to "Edit this flat", edit_flat_path(@flat) %> 
+  <% end %>
   <%= link_to "Back to flats", flats_path %>
 
-  <%= button_to "Destroy this flat", @flat, method: :delete %>
+  <% if policy(@flat).destroy? %>
+    <%= button_to "Destroy this flat", @flat, method: :delete %>
+  <% end %>
 </div>

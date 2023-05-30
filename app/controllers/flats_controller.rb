@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
 
   # GET /flats or /flats.json
   def index
-    @flats = Flat.all
+    @flats = policy_scope(Flat)
   end
 
   # GET /flats/1 or /flats/1.json
@@ -13,6 +13,7 @@ class FlatsController < ApplicationController
   # GET /flats/new
   def new
     @flat = Flat.new
+    authorize @flat
   end
 
   # GET /flats/1/edit
@@ -22,6 +23,8 @@ class FlatsController < ApplicationController
   # POST /flats or /flats.json
   def create
     @flat = Flat.new(flat_params)
+    @flat.user = current_user
+    authorize @flat
 
     respond_to do |format|
       if @flat.save
@@ -61,10 +64,11 @@ class FlatsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_flat
       @flat = Flat.find(params[:id])
+      authorize @flat
     end
 
     # Only allow a list of trusted parameters through.
     def flat_params
-      params.require(:flat).permit(:name, :address, :description, :occupancy, :price, :image_url, :user_id)
+      params.require(:flat).permit(:name, :address, :description, :occupancy, :price, :image_url)
     end
 end
