@@ -9,3 +9,5 @@
   <%# </div> %>
 </div>
 <%= link_to "New flat", new_flat_path , class: "btn btn-secondary mt-3" if policy(Flat).new?%>
+
+<%= link_to "Your reservations", user_reservations_path(current_user)%>

@@ -4,10 +4,12 @@ class FlatsController < ApplicationController
   # GET /flats or /flats.json
   def index
     @flats = policy_scope(Flat)
+    # @flat.user = current_user
   end
 
   # GET /flats/1 or /flats/1.json
   def show
+    @flat.user = current_user
   end
 
   # GET /flats/new
@@ -23,8 +25,8 @@ class FlatsController < ApplicationController
   # POST /flats or /flats.json
   def create
     @flat = Flat.new(flat_params)
-    @flat.user = current_user
     authorize @flat
+    # @flat.user = current_user
 
     respond_to do |format|
       if @flat.save
