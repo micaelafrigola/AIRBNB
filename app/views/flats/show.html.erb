@@ -1,14 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @flat %>
+<div class="container">
+  <div class="row">
 
-<div>
-  <% if policy(@flat).edit? %>
-    <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-primary mt-3"%>
-  <% end %>
-  <%= link_to "Back to flats", flats_path, class: "btn btn-primary mt-3" %>
+    <div class="col-12 col-lg-8">
+      <%= render "flat", flat: @flat, full_description: true %>
+      <div class="all-btn mb-3">
+        <%= link_to "Back to flats", flats_path, class: "btn btn-blue mt-3" %>
+          <div class="btn-group">
+            <% if policy(@flat).destroy? %>
+              <%= button_to "Delete this flat", @flat, method: :delete, class: "btn btn-outline-red mt-3 me-2" %>
+            <% end %>
+            <% if policy(@flat).edit? %>
+              <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-light-blue mt-3"%>
+            <% end %>
+          </div>
+      </div>
+    </div>
 
-  <% if policy(@flat).destroy? %>
-    <%= button_to "Delete this flat", @flat, method: :delete, class: "btn btn-outline-danger mt-3" %>
-  <% end %>
+    <div class="col-12 col-lg-4" id="map">
+    </div>
+
+  </div>
 </div>
