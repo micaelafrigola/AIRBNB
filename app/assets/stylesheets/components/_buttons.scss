@@ -10,8 +10,19 @@
 }
 
 
-/////////// LIGHT GREY BUTTON /////////////////////////
+/////////// LIGHT BLUE BUTTON /////////////////////////
 
+.btn-light-blue {
+  border-color: #c9ccce;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  opacity: 0,5;
+  color: black;
+}
+
+.btn-light-blue:hover {
+  background-color: #BAD7E9;
+  color: black
+}
 
 
 
