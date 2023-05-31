@@ -25,9 +25,9 @@ class FlatsController < ApplicationController
   # POST /flats or /flats.json
   def create
     @flat = Flat.new(flat_params)
+    @flat.user = current_user
     authorize @flat
-    # @flat.user = current_user
-
+    
     respond_to do |format|
       if @flat.save
         format.html { redirect_to flat_url(@flat), notice: "Flat was successfully created." }
