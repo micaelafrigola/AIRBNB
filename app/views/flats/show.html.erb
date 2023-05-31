@@ -1,24 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <%= render "flat", flat: @flat, full_description: true %>
 
-<%= render @flat %>
+      <%= link_to "Make a reservation", new_flat_reservation_path(@flat) %>
+      <div class="all-btn mb-3">
+        <%= link_to "Back to flats", flats_path, class: "btn btn-blue mt-3" %>
+          <div class="btn-group">
+            <% if policy(@flat).destroy? %>
+              <%= button_to "Delete this flat", @flat, method: :delete, class: "btn btn-outline-red mt-3 me-2" %>
+            <% end %>
+            <% if policy(@flat).edit? %>
+              <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-light-blue mt-3"%>
+            <% end %>
+          </div>
+      </div>
+    </div>
 
-<p><strong>Reservation</strong></p>
-<ul class="list-group">
-  <% @flat.reservations.each do |reservation| %>
-    <li class="list-group-item"><%= reservation.start_date %></li>
-  <% end %>
-</ul>
-<br>
-
- <%= link_to "Make a reservation", new_flat_reservation_path(@flat) %>
-
-<div>
-  <% if policy(@flat).edit? %>
-    <%= link_to "Edit this flat", edit_flat_path(@flat) %>
-  <% end %>
-  <%= link_to "Back to flats", flats_path %>
-
-  <% if policy(@flat).destroy? %>
-    <%= button_to "Destroy this flat", @flat, method: :delete %>
-  <% end %>
+    <div class="col-12 col-lg-4" id="map">
+    </div>
+  </div>
 </div>
