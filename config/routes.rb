@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  resources :flats do
-    resources :reservations, only: [:new, :create]
+   resources :flats do
+     resources :reservations, only: [:new, :create]
   end
 
-  resources :users do
-    resources :reservations, only: [:index, :show, :edit, :update]
-  end
+  resources :reservations, only: [:index, :show, :edit, :update]
 
   devise_for :users
   root to: "flats#index"

@@ -1,8 +1,9 @@
 <h1>Your Reservations</h1>
 <div class="cards">
     <% @reservations.each do |reservation| %>
-      <%= reservation.start_date %>
-      <%= reservation.end_date %>
-      <%= reservation.num_of_guests %>
+      Flat: <%= reservation.flat.name %>
+      Start date:<%= reservation.start_date %>
+      End date:<%= reservation.end_date %>
+      Number of guests:<%= reservation.num_of_guests %>
     <% end %>
 </div>

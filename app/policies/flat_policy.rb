@@ -1,9 +1,5 @@
 class FlatPolicy < ApplicationPolicy
 
-  def index?
-    true
-  end
-
   def show?
     true
   end
