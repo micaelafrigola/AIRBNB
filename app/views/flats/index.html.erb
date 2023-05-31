@@ -12,11 +12,10 @@
   <%# <div id="flats"> %>
   <% @flats.each do |flat| %>
     <div class="container">
-      <%= render flat %>
+      <%= render "flat", flat: flat, full_description: false %>
       <div class="d-grid">
-        <%= link_to "Show this flat", flat, class: "btn mt-2 mb-5"%>
+        <%= link_to "Show this flat", flat, class: "btn btn-blue mt-2 mb-5"%>
       </div>
     </div>
   <% end %>
 </div>
-<%= link_to "New flat", new_flat_path , class: "btn btn-secondary mt-3" if policy(Flat).new?%>
