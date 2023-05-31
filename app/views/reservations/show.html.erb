@@ -20,3 +20,9 @@ End date: <%= @reservation.end_date %>
 Number of guests: <%= @reservation.num_of_guests %>
 Total: <%= (@reservation.end_date - @reservation.start_date).to_i %> nights x <%= @flat.price %> CHF = <%= @flat.price * (@reservation.end_date - @reservation.start_date) %> CHF
 Status: <%= @reservation.status %>
+
+ <%= link_to "Edit reservation", edit_reservation_path(@reservation) %>
+  <%= link_to "Delete",
+    delete_reservation_path(@reservation),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>

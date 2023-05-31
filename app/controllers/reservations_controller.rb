@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: %i[show edit update]
+  before_action :set_reservation, only: %i[show edit update destroy]
 
   def index
     @reservations = policy_scope(Reservation)
@@ -33,6 +33,16 @@ class ReservationsController < ApplicationController
   end
 
   def update
+    if @reservation.update(reservation_params)
+      redirect_to reservations_path, notice: "Reservation was successfully updated."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @reservation.destroy
+    redirect_to reservations_path, notice: "Reservation was successfully deleted."
   end
 
   private
@@ -46,5 +56,14 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:start_date, :end_date, :num_of_guests)
   end
+
+  def accept!
+    @reservation.status = true
+  end
+
+  def decline!
+    @reservation.status = false
+  end
+
 
 end

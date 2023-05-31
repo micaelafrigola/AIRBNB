@@ -1,7 +1,2 @@
 <h1>New reservation</h1>
-<%= simple_form_for [@flat, @reservation] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.input :num_of_guests %>
-  <%= f.submit "Submit reservation", class: "btn btn-primary" %>
-<% end %>
+<%= render "form", reservation: @reservation %>
