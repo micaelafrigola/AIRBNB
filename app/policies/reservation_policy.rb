@@ -8,19 +8,15 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    record.flat.user != user
   end
 
   def create?
     true
   end
 
-  def edit?
-    true
-  end
-
   def update?
-    true
+    record.user == user
   end
 
   def destroy?
@@ -30,7 +26,7 @@ class ReservationPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 end
