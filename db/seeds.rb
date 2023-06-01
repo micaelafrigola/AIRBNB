@@ -12,6 +12,9 @@
 #   Reservation.create(start_date: Date.parse('2023-07-22'), end_date: Date.parse('2023-07-30'), num_of_guests: 4, user_id: 3, flat_id: 1)
 # end
 
+
+require "open-uri"
+
 puts "Cleaning database..."
 User.destroy_all
 
@@ -39,8 +42,10 @@ flat = {name: "Buenos Aires", address: "Argentina", description: "Super flat", o
 wago = {name: "Flat", address: "Argentina", description: "Super flat", occupancy: 2, price: 200, image_url: "https://images.unsplash.com/photo-1595877244574-e90ce41ce089?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OTV8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60", user_id: 2}
 
 [wagon, small, big, chalet, resort, flat, wago].each do |attributes|
-  flat = Flat.create!(attributes)
-  puts "Created #{flat.name}"
+  file = URI.open(attributes[:image_url])
+  flat = Flat.new(attributes)
+  flat.photo.attach(io: file, filename: "test.jpg", content_type: "image/jpg")
+  flat.save
 end
 
 Reservation.destroy_all

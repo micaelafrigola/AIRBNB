@@ -1,5 +1,6 @@
 <div class="card">
-  <img class="card-img-top" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" , alt="Card image cap">
+  <%# <img class="card-img-top" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" , alt="Card image cap"> %>
+  <%= cl_image_tag reservation.flat.photo.key, height: 700, width: 1000, crop: :fill, class: "img-fluid" %>
   <div class="card-body">
     <h5 class="card-title"><%= reservation.flat.name %></h5>
     <p class="card-text">
@@ -9,9 +10,9 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Location: <%= reservation.flat.address %></li>
     <li class="list-group-item">Start date: <%= reservation.start_date %>
-    <li class="list-group-item">End date: <%= reservation.end_date %>
-    <li class="list-group-item">Number of guests: <%= reservation.num_of_guests%>
-    <div></div>
-    <li class="list-group-item">Price p. Night: <%= reservation.flat.price %> CHF</li>
-  </ul>
-</div>
+      <li class="list-group-item">End date: <%= reservation.end_date %>
+        <li class="list-group-item">Number of guests: <%= reservation.num_of_guests%>
+          <div></div>
+          <li class="list-group-item">Price p. Night: <%= reservation.flat.price %> CHF</li>
+        </ul>
+      </div>
