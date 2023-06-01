@@ -1,28 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <%= render "reservation", reservation: @reservation, full_description: true %>
 
-<div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body" style="height: 88px;" overflow="hidden">
-    <h5 class="card-title"><%= @flat.name %></h5>
-    <p class="card-text"><%= @flat.description %></p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Location: <%= @flat.address %></li>
-    <li class="list-group-item">Occupancy: <%= @flat.occupancy %></li>
-  </ul>
-  <div class="card-body text-center">
-      <%= link_to "Show this flat", @flat, class: "btn btn-primary"%>
 
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <div class="bg-white border p-3 sticky-top">
+        <div class="d-flex align-items-center justify-content-center mt-3">
+          <h4><%= (@reservation.end_date - @reservation.start_date).to_i %> nights x <%= @flat.price %> CHF</h4>
+        </div>
+        <div class="d-flex align-items-center justify-content-center mt-3">
+          <h4><strong>Total: <%= @flat.price * (@reservation.end_date - @reservation.start_date) %></strong></h4>
+        </div>
+          <% if current_user.admin? || @reservation.user == current_user %>
+            <div class="d-grid">
+              <% if policy(@reservation).edit? %>
+                <%= link_to "Edit this reservation", edit_reservation_path(@reservation), class: "btn btn-light-blue mt-3"%>
+              <% end %>
+            </div>
+            <div class="d-grid">
+              <% if policy(@reservation).destroy? %>
+                <%= link_to "Delete", delete_reservation_path(@reservation), method: :delete, class: "btn btn-outline-red mt-3 me-2", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+          <%= link_to "Back to your reservations", reservations_path, class: "btn btn-blue mt-5" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-Start date: <%= @reservation.start_date %>
-End date: <%= @reservation.end_date %>
-Number of guests: <%= @reservation.num_of_guests %>
-Total: <%= (@reservation.end_date - @reservation.start_date).to_i %> nights x <%= @flat.price %> CHF = <%= @flat.price * (@reservation.end_date - @reservation.start_date) %> CHF
-Status: <%= @reservation.status %>
-
- <%= link_to "Edit reservation", edit_reservation_path(@reservation) %>
-  <%= link_to "Delete",
-    delete_reservation_path(@reservation),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
