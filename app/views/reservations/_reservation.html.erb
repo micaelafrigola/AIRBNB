@@ -11,7 +11,15 @@
     <li class="list-group-item">Start date: <%= reservation.start_date %>
     <li class="list-group-item">End date: <%= reservation.end_date %>
     <li class="list-group-item">Number of guests: <%= reservation.num_of_guests%>
-    <div></div>
-    <li class="list-group-item">Price p. Night: <%= reservation.flat.price %> CHF</li>
+    <li class="list-group-item">Status:
+      <%if reservation.status == nil %>
+        pending
+      <%elsif reservation.status == true %>
+      accepted
+      <% else %>
+      rejected
+      <% end %>
+        <li class="list-group-item">Price p. Night: <%= reservation.flat.price %> CHF</li>
+    </div>
   </ul>
 </div>
