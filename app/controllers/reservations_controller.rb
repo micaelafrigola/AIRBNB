@@ -10,7 +10,6 @@ class ReservationsController < ApplicationController
   end
 
   def new
-
     @reservation = Reservation.new
     @flat = Flat.find(params[:flat_id])
     authorize @reservation

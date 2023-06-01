@@ -1,0 +1,19 @@
+<div class="card">
+  <img class="card-img-top" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" , alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= reservation.flat.name %></h5>
+    <p class="card-text">
+      <%= reservation.flat.description %>
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Location <%= reservation.flat.address %></li>
+    <li class="list-group-item">Start date:<%= reservation.start_date %>
+    <li class="list-group-item">End date:<%= reservation.end_date %>
+    <li class="list-group-item">Number of guests:<%= reservation.num_of_guests%>
+    <li class="list-group-item">Price p. Night
+    <br />
+    <br />
+    <strong><%= reservation.flat.price %></strong> CHF</li>
+  </ul>
+</div>
