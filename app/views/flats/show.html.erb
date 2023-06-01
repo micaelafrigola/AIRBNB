@@ -3,7 +3,6 @@
     <div class="col-12 col-lg-8">
       <%= render "flat", flat: @flat, full_description: true %>
 
-      <div class="all-btn mb-3">
         <%= link_to "Back to flats", flats_path, class: "btn btn-blue mt-3" %>
           <div class="btn-group">
           <% if current_user.admin? || @flat.user == current_user %>

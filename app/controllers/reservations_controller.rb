@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
     @flat = Flat.find(params[:flat_id])
+    @reservation.flat = @flat
     authorize @reservation
   end
 
