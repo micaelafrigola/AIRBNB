@@ -1,9 +1,14 @@
-<h1>Your Reservations</h1>
-<div class="cards">
+
+<div class="container">
+  <h1>My Reservations</h1>
+  <div class="cards">
     <% @reservations.each do |reservation| %>
-      Flat: <%= reservation.flat.name %>
-      Start date:<%= reservation.start_date %>
-      End date:<%= reservation.end_date %>
-      Number of guests:<%= reservation.num_of_guests %>
+      <div class="container">
+        <%= render "reservation", reservation: reservation %>
+        <div class="d-grid">
+          <%= link_to "Back to flats", flats_path , class: "btn btn-blue mt-2 mb-5"%>
+        </div>
+      </div>
     <% end %>
+  </div>
 </div>
