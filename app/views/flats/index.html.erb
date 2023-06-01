@@ -4,7 +4,7 @@
     <h6>Get the local experience - Find the perfect flat</h6>
   </div>
   <div class="container justify-content-center mb-3">
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center" id="search-box">
       <div class="col-sm-8 my-3 d-flex align-items-center">
         <%= form_with url: flats_path, method: :get, class: "w-100" do %>
           <div class="input-group">
@@ -28,7 +28,7 @@
     <div class="container">
       <%= render "flat", flat: flat, full_description: false %>
       <div class="d-grid">
-        <%= link_to "Show this flat", flat, class: "btn btn-blue mt-2 mb-5"%>
+        <%= link_to "Show details", flat, class: "btn btn-blue mt-2 mb-5"%>
       </div>
     </div>
   <% end %>
