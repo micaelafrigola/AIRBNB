@@ -1,24 +1,22 @@
-
 <%# locals: (flat:, full_description: true) -%>
-
 <div id="<%= dom_id flat%>">
   <div class="card">
     <img class="card-img-top" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" , alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"><%= flat.name %></h5>
       <p class="card-text">
-      <% if full_description %>
-        <%= flat.description %>
-      <% else %>
-        <%=  " "%>
-      <% end %>
+        <% if full_description %>
+          <%= flat.description %>
+        <% end %>
       </p>
+
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Location <%= flat.address %></li>
       <li class="list-group-item">Occupancy <%= flat.occupancy %></li>
-      <li class="list-group-item">Price p. Night<br>
-      <br>
+      <li class="list-group-item">Price p. Night
+      <br />
+      <br />
       <strong><%= flat.price %></strong> CHF</li>
     </ul>
 

@@ -1,0 +1,6 @@
+<%= simple_form_for [@flat, @reservation] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :num_of_guests %>
+  <%= f.submit "Confirm", class: "btn btn-primary" %>
+<% end %>

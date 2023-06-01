@@ -1,0 +1,28 @@
+
+<div class="card">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body" style="height: 88px;" overflow="hidden">
+    <h5 class="card-title"><%= @flat.name %></h5>
+    <p class="card-text"><%= @flat.description %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Location: <%= @flat.address %></li>
+    <li class="list-group-item">Occupancy: <%= @flat.occupancy %></li>
+  </ul>
+  <div class="card-body text-center">
+      <%= link_to "Show this flat", @flat, class: "btn btn-primary"%>
+
+  </div>
+</div>
+
+Start date: <%= @reservation.start_date %>
+End date: <%= @reservation.end_date %>
+Number of guests: <%= @reservation.num_of_guests %>
+Total: <%= (@reservation.end_date - @reservation.start_date).to_i %> nights x <%= @flat.price %> CHF = <%= @flat.price * (@reservation.end_date - @reservation.start_date) %> CHF
+Status: <%= @reservation.status %>
+
+ <%= link_to "Edit reservation", edit_reservation_path(@reservation) %>
+  <%= link_to "Delete",
+    delete_reservation_path(@reservation),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>

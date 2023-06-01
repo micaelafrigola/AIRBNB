@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
 <div class="container">
   <div class="row">
-
     <div class="col-12 col-lg-8">
       <%= render "flat", flat: @flat, full_description: true %>
+
+      <%= link_to "Make a reservation", new_flat_reservation_path(@flat) %>
       <div class="all-btn mb-3">
         <%= link_to "Back to flats", flats_path, class: "btn btn-blue mt-3" %>
           <div class="btn-group">
@@ -17,9 +16,7 @@
           </div>
       </div>
     </div>
-
     <div class="col-12 col-lg-4" id="map">
     </div>
-
   </div>
 </div>
