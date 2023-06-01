@@ -4,12 +4,10 @@ class FlatsController < ApplicationController
   # GET /flats or /flats.json
   def index
     @flats = policy_scope(Flat)
-    # @flat.user = current_user
   end
 
   # GET /flats/1 or /flats/1.json
   def show
-    @flat.user = current_user
   end
 
   # GET /flats/new
@@ -27,7 +25,7 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     authorize @flat
-    
+
     respond_to do |format|
       if @flat.save
         format.html { redirect_to flat_url(@flat), notice: "Flat was successfully created." }
