@@ -7,13 +7,11 @@
     </p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Location <%= reservation.flat.address %></li>
-    <li class="list-group-item">Start date:<%= reservation.start_date %>
-    <li class="list-group-item">End date:<%= reservation.end_date %>
-    <li class="list-group-item">Number of guests:<%= reservation.num_of_guests%>
-    <li class="list-group-item">Price p. Night
-    <br />
-    <br />
-    <strong><%= reservation.flat.price %></strong> CHF</li>
+    <li class="list-group-item">Location: <%= reservation.flat.address %></li>
+    <li class="list-group-item">Start date: <%= reservation.start_date %>
+    <li class="list-group-item">End date: <%= reservation.end_date %>
+    <li class="list-group-item">Number of guests: <%= reservation.num_of_guests%>
+    <div></div>
+    <li class="list-group-item">Price p. Night: <%= reservation.flat.price %> CHF</li>
   </ul>
 </div>
