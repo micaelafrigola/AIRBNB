@@ -25,6 +25,8 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to reservations_path, notice: "Reservation was successfully created."
     else
+      @flat = Flat.find(params[:flat_id])
+      # redirect_to reservations_path, status: :unprocessable_entity
       render :new, status: :unprocessable_entity
     end
   end
