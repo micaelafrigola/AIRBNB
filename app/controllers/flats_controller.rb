@@ -4,14 +4,23 @@ class FlatsController < ApplicationController
   # GET /flats or /flats.json
   def index
     @flats = policy_scope(Flat)
-      if params[:query].present?
-        sql_subquery = "name ILIKE :query OR address ILIKE :query"
-        @flats = @flats.where(sql_subquery, query: "%#{params[:query]}%")
-      end
+
+    if params[:query].present?
+      sql_subquery = "name ILIKE :query OR address ILIKE :query"
+      @flats = @flats.where(sql_subquery, query: "%#{params[:query]}%")
+    end
+  end
+
+  def userflat
+    @flats = policy_scope(Flat).where(user_id: current_user)
   end
 
   # GET /flats/1 or /flats/1.json 
   def show
+    @marker = {
+        lat: @flat.latitude,
+        lng: @flat.longitude
+      }
   end
 
   # GET /flats/new
