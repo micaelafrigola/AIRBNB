@@ -4,6 +4,10 @@ class FlatPolicy < ApplicationPolicy
     true
   end
 
+  def userflat?
+    true
+  end
+
   def show?
     true
   end
