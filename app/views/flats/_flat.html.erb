@@ -2,7 +2,9 @@
 <div>
   <div class="card">
     <%# <img class="card-img-top" src= <%= flat.image_url %>
-    <% if full_image %>
+    <% if flat.image_url.nil? %>
+      <%= image_tag("https://images.unsplash.com/photo-1685267799410-5bd3929789b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80")%>
+    <% elsif full_image %>
       <%= cl_image_tag flat.photo.key, height: 700, width: 1000, crop: :fill, class: "img-fluid" %>
     <% else %>
       <%= cl_image_tag flat.photo.key, height: 400, width: 600, crop: :fill, class: "img-fluid" %>
