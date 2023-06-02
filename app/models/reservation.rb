@@ -7,6 +7,6 @@ class Reservation < ApplicationRecord
   validate :check_maxi_guests
 
   def check_maxi_guests
-    errors.add(:num_of_guests, "Can't exceed #{flat.occupancy} guests") if num_of_guests > flat.occupancy
+    errors.add(:num_of_guests, "Can't exceed #{flat.occupancy} guests") if num_of_guests.to_i > flat.occupancy || num_of_guests.nil?
   end
 end
