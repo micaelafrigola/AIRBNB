@@ -26,7 +26,7 @@
   <%# <div id="flats"> %>
   <% @flats.each do |flat| %>
     <div class="container">
-      <%= render "flat", flat: flat, full_description: false %>
+      <%= render "flat", flat: flat, full_description: false, full_image: false %>
       <div class="d-grid">
         <%= link_to "Show details", flat, class: "btn btn-blue mt-2 mb-5"%>
       </div>

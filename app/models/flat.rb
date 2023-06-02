@@ -1,4 +1,5 @@
 class Flat < ApplicationRecord
+  has_one_attached :photo
   belongs_to :user
   has_many :reservations
   validates :name, :address, :description, :occupancy, :price, presence: true

@@ -1,7 +1,12 @@
 <%# locals: (flat:, full_description: true) -%>
 <div id="<%= dom_id flat%>">
   <div class="card">
-    <img class="card-img-top" src= <%= flat.image_url %> >
+    <%# <img class="card-img-top" src= <%= flat.image_url %>
+    <% if full_image %>
+      <%= cl_image_tag flat.photo.key, height: 700, width: 1000, crop: :fill, class: "img-fluid" %>
+    <% else %>
+      <%= cl_image_tag flat.photo.key, height: 400, width: 600, crop: :fill, class: "img-fluid" %>
+    <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= flat.name %></h5>
       <p class="card-text">
@@ -9,16 +14,14 @@
           <%= flat.description %>
         <% end %>
       </p>
-
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Location <%= flat.address %></li>
       <li class="list-group-item">Occupancy <%= flat.occupancy %></li>
       <li class="list-group-item">Price p. Night
-      <br />
-      <br />
-      <strong><%= flat.price %></strong> CHF</li>
+        <br />
+        <br />
+        <strong><%= flat.price %></strong> CHF</li>
     </ul>
-
   </div>
 </div>
