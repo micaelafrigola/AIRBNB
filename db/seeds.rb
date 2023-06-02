@@ -51,10 +51,12 @@ end
 Reservation.destroy_all
 
 puts "Creating reservations..."
-one = {start_date: Date.parse('2023-06-01'), end_date: Date.parse('2023-06-02'), num_of_guests: 3, user_id: 1, flat_id: 3}
-two = {start_date: Date.parse('2023-08-12'), end_date: Date.parse('2023-08-23'), num_of_guests: 2, user_id: 2, flat_id: 2}
+one = {start_date: Date.parse('2023-06-01'), end_date: Date.parse('2023-06-02'), num_of_guests: 3, user_id: 1, flat_id: 2}
+two = {start_date: Date.parse('2023-08-12'), end_date: Date.parse('2023-08-23'), num_of_guests: 2, user_id: 2, flat_id: 3, status: true}
 three = {start_date: Date.parse('2023-07-22'), end_date: Date.parse('2023-07-30'), num_of_guests: 4, user_id: 3, flat_id: 1}
-[one, two, three].each do |attributes|
+four = {start_date: Date.parse('2023-08-22'), end_date: Date.parse('2023-08-24'), num_of_guests: 2, user_id: 2, flat_id: 4, status: false}
+five = {start_date: Date.parse('2023-09-12'), end_date: Date.parse('2023-09-15'), num_of_guests: 4, user_id: 2, flat_id: 5, status: true}
+[one, two, three, four, five].each do |attributes|
   reservation = Reservation.create!(attributes)
   puts "Created #{reservation.start_date}"
 end

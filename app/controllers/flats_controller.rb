@@ -11,6 +11,10 @@ class FlatsController < ApplicationController
     end
   end
 
+  def userflat
+    @flats = policy_scope(Flat).where(user_id: current_user)
+  end
+
   # GET /flats/1 or /flats/1.json 
   def show
     @marker = {

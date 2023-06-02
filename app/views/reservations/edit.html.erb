@@ -1,3 +1,16 @@
-<h1>Edit reservation</h1>
-<%= render "form", reservation: @reservation %>
-<%= link_to "Back to reservations", reservations_path %>
+
+<div class="container">
+  <div class="row">
+
+    <div id="new-flat" class="col-12 col-lg-4">
+    </div>
+
+    <div class="col-12 col-lg-8">
+      <h1>Edit reservation</h1>
+      <%= render "form", reservation: @reservation %>
+      <div class="all-btn mb-3">
+        <%= link_to "Back to reservations", reservations_path , class: "btn btn-blue mt-1"%>
+      </div>
+    </div>
+  </div>
+</div>

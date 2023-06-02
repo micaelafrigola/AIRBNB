@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
    resources :flats do
+    collection do
+      get :userflat
+    end
      resources :reservations, only: [:new, :create] do
      end
   end
