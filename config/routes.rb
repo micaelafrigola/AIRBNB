@@ -7,8 +7,14 @@ Rails.application.routes.draw do
      end
   end
 
-  resources :reservations, only: [:index, :show, :edit, :update]
+  resources :reservations, only: [:index, :show, :edit, :update] do
+    collection do
+      get :userflatreservation
+      patch :accept
+      patch :decline
+    end
   resources :reservations, only: [:destroy], as: :delete_reservation
+  end
 
   devise_for :users
   root to: "flats#index"

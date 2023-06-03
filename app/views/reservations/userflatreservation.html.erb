@@ -1,0 +1,13 @@
+<div class="cards"id="my-reservations">
+    <% @reservations.each do |reservation| %>
+      <div class="container">
+        <%= render "reservation", reservation: reservation %>
+        <div class="d-grid">
+          <%= button_to "Accept", accept_reservations_path(reservation), class: "btn btn-large btn-success", method: :patch %>
+          <%= button_to "Decline", decline_reservations_path(reservation), class: "btn btn-large btn-danger", method: :patch %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<%= link_to "Back to your reservations", reservations_path, class: "btn btn-blue mt-5" %>

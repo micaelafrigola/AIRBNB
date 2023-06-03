@@ -19,7 +19,7 @@
           </div>
           <div class="d-grid">
             <% if policy(@reservation).destroy? %>
-              <%= link_to "Delete", delete_reservation_path(@reservation), method: :delete, class: "btn btn-outline-red mt-3 me-2", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              <%= link_to "Delete", reservation_delete_reservation_path(@reservation), method: :delete, class: "btn btn-outline-red mt-3 me-2", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             <% end %>
           </div>
         <% end %>

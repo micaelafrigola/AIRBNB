@@ -15,11 +15,11 @@
           <li class="list-group-item">Number of guests: <%= reservation.num_of_guests%>
           <li class="list-group-item">Status:
             <%if reservation.status == nil %>
-              pending
+               pending
             <%elsif reservation.status == true %>
               accepted
             <% else %>
-              rejected
+              declined
             <% end %>
           <li class="list-group-item">Price p. Night: <%= reservation.flat.price %> CHF</li>
       </ul>

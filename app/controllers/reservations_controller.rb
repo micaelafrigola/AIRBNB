@@ -9,6 +9,27 @@ class ReservationsController < ApplicationController
     @flat = @reservation.flat
   end
 
+  def userflatreservation
+    @flats = Flat.where(user_id: current_user)
+    @reservations = Reservation.where(flat_id: @flats)
+    authorize @reservations
+    # authorize @flats
+  end
+
+  def accept
+    @reservation = Reservation.find(params[:format])
+    @reservation.update(status: true)
+    redirect_to reservations_path, notice: "Reservation accepted!"
+    authorize @reservation
+  end
+
+  def decline
+    @reservation = Reservation.find(params[:format])
+    @reservation.update(status: false)
+    redirect_to reservations_path, notice: "Reservation declined!"
+    authorize @reservation
+  end
+
   def new
     @reservation = Reservation.new
     @flat = Flat.find(params[:flat_id])
@@ -55,16 +76,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:start_date, :end_date, :num_of_guests)
+    params.require(:reservation).permit(:start_date, :end_date, :num_of_guests, :status)
   end
-
-  def accept!
-    @reservation.status = true
-  end
-
-  def decline!
-    @reservation.status = false
-  end
-
-
 end

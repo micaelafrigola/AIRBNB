@@ -7,6 +7,18 @@ class ReservationPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def userflatreservation?
+    true
+  end
+
+  def accept?
+    true
+  end
+
+  def decline?
+    true
+  end
+
   def new?
     record.flat.user != user
   end
@@ -16,7 +28,8 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    # record.user == user
+    true
   end
 
   def destroy?
